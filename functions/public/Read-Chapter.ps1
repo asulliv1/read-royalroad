@@ -9,7 +9,7 @@ function Read-Chapter
 
     $ChapterContent = Invoke-WebRequest -uri "$($BaseURL)$($ChapterURL)"
 
-    [string]$Chapter = ($ChapterContent.ParsedHtml.GetElementsByTagName('div') | Where {
+    [string]$Chapter = ($ChapterContent.ParsedHtml.GetElementsByTagName('div') | Where-Object {
         $_.ClassName -eq 'chapter-inner chapter-content'
     }).InnerText
 
